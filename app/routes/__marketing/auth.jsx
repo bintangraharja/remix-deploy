@@ -33,9 +33,7 @@ export async function action({request}){
       // return redirect('/expenses');
     }
   } catch (error) {
-    if (error.status === 422) {
-      return { credentials: error.message };
-    }
+    return { credentials: error.message };
   }
 }
 
