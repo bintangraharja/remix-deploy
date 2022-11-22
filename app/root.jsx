@@ -51,20 +51,18 @@ export default function App() {
 }
 
 export function CatchBoundary(){
-  const caughtResponse =  useCatch();
-  return (
-    <Document title={caughtResponse.statusText}>
+  const caughtResponse = useCatch();
+  const title = caughtResponse.statusText;
+  return(
+    <Document title={title}>
       <main>
-        <Error title={caughtResponse.statusText}>
-          <p>
-            {caughtResponse.data?.message || 
-            'Something went wrong. Please try again later.'}
-            </p>
-          <p>Back to <Link to="/">safety</Link>.</p>
+        <Error title={title}>
+          <p>{caughtResponse.data?.message || 'Something went wrong. Please try again later.'}</p>
+          <p>Back to <Link to='/'>Safety</Link></p>
         </Error>
       </main>
     </Document>
-  );
+  )
 }
 
 export function ErrorBoundary({error}){
