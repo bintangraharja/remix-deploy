@@ -9,22 +9,18 @@ const {
   useCatch,
   useMatches,
 } = require("@remix-run/react");
-
 import sharedStyles from '~/styles/shared.css';
 import Error from './components/util/Error';
-
 export const meta = () => ({
   charset: "utf-8",
-  title: "Expenses App",
+  title: "RemixExpenses",
   viewport: "width=device-width,initial-scale=1",
 });
 
-function Document({title,children}){
+function Document({title, children}){
   const matches = useMatches();
 
   const disableJS = matches.some(match => match.handle?.disableJS);
-
-
   return (
     <html lang="en">
       <head>
@@ -33,19 +29,18 @@ function Document({title,children}){
         <Links />
       </head>
       <body>
-        {children}
+      {children}
         <ScrollRestoration />
         {!disableJS && <Scripts />}
         <LiveReload />
       </body>
     </html>
-  )
+  );
 }
-
 export default function App() {
   return (
     <Document>
-      <Outlet/>
+      <Outlet />
     </Document>
   );
 }
@@ -66,20 +61,18 @@ export function CatchBoundary(){
 }
 
 export function ErrorBoundary({error}){
-  return <Document title="An error occurred">
+  return(
+    <Document title='An Error Occured'>
       <main>
-        <Error title="An error occurred">
-          <p>
-            {error.message || 
-            'Something went wrong. Please try again later.'}
-            </p>
-          <p>Back to <Link to="/">safety</Link>.</p>
+        <Error title='An Error Occured'>
+          <p>{error.message || 'Something went wrong. Please try again later.'}</p>
+          <p>Back to <Link to='/'>Safety</Link></p>
         </Error>
       </main>
     </Document>
+  )
 }
 
 export function links(){
-  return[{rel: 'stylesheet', href: sharedStyles},
-  {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Rubik'}];
+  return[{rel:'stylesheet', href: sharedStyles}];
 }
