@@ -45,7 +45,7 @@ export default function Index() {
 
 export function meta() {
   return {
-    title: 'RemixExpenses - The Complete App',
+    title: 'RemixExpenses - Bintang Raharja',
     description: 'Manage your expenses with ease'
   }
 }
